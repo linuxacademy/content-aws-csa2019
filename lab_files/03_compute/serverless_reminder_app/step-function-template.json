@@ -1,0 +1,82 @@
+{
+  "Comment": "An example of the Amazon States Language using a choice state.",
+  "StartAt": "SendReminder",
+  "States": {
+    "SendReminder": {
+      "Type": "Wait",
+      "SecondsPath": "$.waitSeconds",
+      "Next": "ChoiceState"
+    },
+    "ChoiceState": {
+      "Type" : "Choice",
+      "Choices": [
+        {
+          "Variable": "$.preference",
+          "StringEquals": "email",
+          "Next": "EmailReminder"
+        },
+        {
+          "Variable": "$.preference",
+          "StringEquals": "sms",
+          "Next": "TextReminder"
+        },
+        {
+          "Variable": "$.preference",
+          "StringEquals": "both",
+          "Next": "BothReminders"
+        }
+      ],
+      "Default": "DefaultState"
+    },
+
+    "EmailReminder": {
+      "Type" : "Task",
+      "Resource": "EMAIL_REMINDER_ARN",
+      "Next": "NextState"
+    },
+
+    "TextReminder": {
+      "Type" : "Task",
+      "Resource": "TEXT_REMINDER_ARN",
+      "Next": "NextState"
+    },
+    
+    "BothReminders": {
+      "Type": "Parallel",
+      "Branches": [
+        {
+          "StartAt": "EmailReminderPar",
+          "States": {
+            "EmailReminderPar": {
+              "Type" : "Task",
+              "Resource": "EMAIL_REMINDER_ARN",
+              "End": true
+            }
+          }
+        },
+        {
+          "StartAt": "TextReminderPar",
+          "States": {
+            "TextReminderPar": {
+              "Type" : "Task",
+              "Resource": "TEXT_REMINDER_ARN",
+              "End": true
+            }
+          }
+        }
+      ],
+      "Next": "NextState"
+    },
+    
+    "DefaultState": {
+      "Type": "Fail",
+      "Error": "DefaultStateError",
+      "Cause": "No Matches!"
+    },
+
+    "NextState": {
+      "Type": "Pass",
+      "End": true
+    }
+  }
+}

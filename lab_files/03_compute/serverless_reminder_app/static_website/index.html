@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Penguin Reminder Service</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="main.css" rel="stylesheet">
+
+    <!-- JavaScript stuff for the sending of requests -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <form class="form-signin">
+        <img class="d-block w-100" src="./cat.png" alt="the boss">
+        <center><h2 class="form-signin-heading">CatSlave9000</h2></center>
+        <center><h3 class="form-signin-heading">Remember all the things</h3></center>
+        <div id='error-message'></div>
+        <div id='success-message'></div>
+        <label for="waitSeconds" class="sr-only"></label>
+        <p>Required sections:</p>
+        <input type="text" id="waitSeconds" class="form-control" placeholder="Seconds to wait... e.g. 10">
+        <label for="message" class="sr-only">Message (Required)</label>
+        <input type="text" id="message" class="form-control" placeholder="Message (Required)">
+        <hr>
+        <p>Email address is required for email reminders, phone number is required for phone reminders:</p>
+        <label for="email" class="sr-only">email</label>
+        <input type="email" id="email" class="form-control" placeholder="someone@something.com">
+        <label for="phone" class="sr-only">phone</label>
+        <input type="text" id="phone" class="form-control" placeholder="+15556667788">
+        <hr>
+        <h3>Reminder Type:</h3>
+        <button id="bothButton" class="btn btn-md btn-primary btn-block" type="submit">both</button>
+        <button id="emailButton" class="btn btn-md btn-primary btn-block" type="submit">email</button>
+        <button id="smsButton" class="btn btn-md btn-primary btn-block" type="submit">sms</button>
+
+        <div id='results-message'></div>
+      </form>
+
+    </div> <!-- /container -->
+
+    <script src="formlogic.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>
