@@ -1,7 +1,7 @@
 {
     "waitSeconds": 10,
    "preference": "both",
-    "message": "Hello! You rock, but remember you need to do something",
-    "email": "fernando@linuxacademy.com",
+    "message": "Hello! this works, but remember your cat needs something",
+    "email": "adrian.cantrill@linuxacademy.com",
     "phone": "+15555555555"
 }

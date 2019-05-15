@@ -37,6 +37,7 @@ def lambda_handler(event, context):
                 cls=DecimalEncoder
             )
         }
+    # If none, run the state machine and return a 200 code saying this is fine :)
     else: 
         sfn.start_execution(
             stateMachineArn=SFN_ARN,
