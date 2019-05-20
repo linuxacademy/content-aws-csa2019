@@ -2,7 +2,7 @@
 // It should look something like this:
 // https://example1a2s3d.execute-api.us-east-1.amazonaws.com/prod/reminders
 
-var API_ENDPOINT = 'https://5cupw8idhg.execute-api.us-east-1.amazonaws.com/prod/reminders';
+var API_ENDPOINT = 'UPDATETOYOURENDPOINTADDRESS/reminders';
 
 // Setup divs that will be used to display interactive messages
 var errorDiv = document.getElementById('error-message')
@@ -55,7 +55,7 @@ function sendData (e, pref) {
         }),
         mode: 'cors'
     })
-    .then((resp) => resp.json()) 
+    .then((resp) => resp.json())
     .then(function(data) {
         console.log(data)
         successDiv.textContent = 'Looks ok. But check the result below!';
@@ -66,4 +66,3 @@ function sendData (e, pref) {
         console.log(err)
     });
 };
-
