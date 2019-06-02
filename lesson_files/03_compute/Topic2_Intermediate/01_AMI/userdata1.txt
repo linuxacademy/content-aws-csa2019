@@ -1,0 +1,14 @@
+#!/bin/bash
+yum update -y
+yum install -y httpd
+yum install -y wget
+chkconfig httpd on
+cd /var/www/html
+wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/01_AMI/SiteVersion1/index.html
+wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/01_AMI/SiteVersion1/catanimated.gif
+wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/01_AMI/SiteVersion1/rainbow.gif
+wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/01_AMI/SiteVersion1/penny.jpeg
+wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/01_AMI/SiteVersion1/roffle.jpeg
+wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/01_AMI/SiteVersion1/truffs.jpeg
+wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/01_AMI/SiteVersion1/winkie.jpeg
+service httpd start
