@@ -1,0 +1,21 @@
+#cloud-config
+repo_update: true
+repo_upgrade: all
+
+packages:
+  - httpd
+  - wget
+
+runcmd:
+- systemctl start httpd
+- sudo systemctl enable httpd
+- [ wget, "https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/02_Bootstrapping/index.html", -O, /var/www/html/index.html]
+- [ wget, "https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/02_Bootstrapping/catanimated.gif", -O, /var/www/html/catanimated.gif]
+- [ wget, "https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/02_Bootstrapping/rainbow.gif", -O, /var/www/html/rainbow.gif]
+- [ wget, "https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/02_Bootstrapping/penny.jpeg", -O, /var/www/html/penny.jpeg]
+- [ wget, "https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/02_Bootstrapping/roffle.jpeg", -O, /var/www/html/roffle.jpeg]
+- [ wget, "https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/02_Bootstrapping/truffs.jpeg", -O, /var/www/html/truffs.jpeg]
+- [ wget, "https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/03_compute/Topic2_Intermediate/02_Bootstrapping/winkie.jpeg", -O, /var/www/html/winkie.jpeg]
+
+
+
