@@ -1,0 +1,5 @@
+{
+    "a":  "$input.params('operand1')",
+    "b":  "$input.params('operand2')", 
+    "op": "$input.params('operator')"   
+}
