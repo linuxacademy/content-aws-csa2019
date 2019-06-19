@@ -4,6 +4,6 @@ yum install -y httpd
 yum install -y wget
 chkconfig httpd on
 cd /var/www/html
-wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/04_networking/Toptic4_DNSFundamentals/PublicCats/index.html
-wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/04_networking/Toptic4_DNSFundamentals/PublicCats/larry.jpg
+wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/04_networking/Toptic4_DNSFundamentals/PrivatePublicZones/PublicCats/index.html
+wget https://raw.githubusercontent.com/linuxacademy/content-aws-csa2019/master/lesson_files/04_networking/Toptic4_DNSFundamentals/PrivatePublicZones/PublicCats/larry.jpg
 service httpd start
