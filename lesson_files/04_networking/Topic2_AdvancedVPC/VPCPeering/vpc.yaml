@@ -18,6 +18,29 @@ Resources:
       Tags:
         - Key: Name
           Value: VPC1
+  VPC2:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.1.10.0/24
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      InstanceTenancy: default
+      Tags:
+        - Key: Name
+          Value: VPC2
+  subnetvpc2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: 
+        Fn::Select:
+          - 0
+          - Fn::GetAZs: ""
+      VpcId: 
+        Ref: VPC
+      CidrBlock: 10.1.10.0/24
+      Tags:
+        - Key: Name
+          Value: subnet-vpc2
   subnetpublicA:
     Type: AWS::EC2::Subnet
     Properties:
