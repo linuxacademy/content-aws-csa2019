@@ -8,7 +8,7 @@ Parameters:
       Description: SSH Key Pair for Bastion and App Instances
       Type: AWS::EC2::KeyPair::KeyName
 Resources: 
-  VPC:
+  VPC1:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: 10.0.0.0/16
@@ -49,7 +49,7 @@ Resources:
           - 0
           - Fn::GetAZs: ""
       VpcId: 
-        Ref: VPC
+        Ref: VPC1
       CidrBlock: 10.0.1.0/24
       Tags:
         - Key: Name
@@ -62,7 +62,7 @@ Resources:
           - 1
           - Fn::GetAZs: ""
       VpcId: 
-        Ref: VPC
+        Ref: VPC1
       CidrBlock: 10.0.2.0/24
       Tags:
         - Key: Name
@@ -75,7 +75,7 @@ Resources:
           - 0
           - Fn::GetAZs: ""
       VpcId: 
-        Ref: VPC
+        Ref: VPC1
       CidrBlock: 10.0.11.0/24
       Tags:
         - Key: Name
@@ -88,7 +88,7 @@ Resources:
           - 1
           - Fn::GetAZs: ""
       VpcId: 
-        Ref: VPC
+        Ref: VPC1
       CidrBlock: 10.0.12.0/24
       Tags:
         - Key: Name
@@ -101,7 +101,7 @@ Resources:
           - 0
           - Fn::GetAZs: ""
       VpcId: 
-        Ref: VPC
+        Ref: VPC1
       CidrBlock: 10.0.21.0/24
       Tags:
         - Key: Name
@@ -114,7 +114,7 @@ Resources:
           - 1
           - Fn::GetAZs: ""
       VpcId: 
-        Ref: VPC
+        Ref: VPC1
       CidrBlock: 10.0.22.0/24
       Tags:
         - Key: Name
@@ -129,14 +129,14 @@ Resources:
     Type: 'AWS::EC2::VPCGatewayAttachment'
     Properties:
       VpcId:
-        Ref: VPC
+        Ref: VPC1
       InternetGatewayId:
         Ref: InternetGateway
   RouteTablePublic: 
     Type: 'AWS::EC2::RouteTable'
     Properties:
       VpcId:
-        Ref: VPC
+        Ref: VPC1
       Tags:
       - Key: Name
         Value: rt-public
@@ -144,7 +144,7 @@ Resources:
     Type: 'AWS::EC2::RouteTable'
     Properties:
       VpcId:
-        Ref: VPC
+        Ref: VPC1
       Tags:
       - Key: Name
         Value: rt-private-A
@@ -152,7 +152,7 @@ Resources:
     Type: 'AWS::EC2::RouteTable'
     Properties:
       VpcId:
-        Ref: VPC
+        Ref: VPC1
       Tags:
       - Key: Name
         Value: rt-private-B
@@ -211,7 +211,7 @@ Resources:
     Type: 'AWS::EC2::NetworkAcl'
     Properties:
       VpcId:
-        Ref: VPC
+        Ref: VPC1
       Tags:
       - Key: Name
         Value: nacl-public
@@ -219,7 +219,7 @@ Resources:
     Type: 'AWS::EC2::NetworkAcl'
     Properties:
       VpcId:
-        Ref: VPC
+        Ref: VPC1
       Tags:
       - Key: Name
         Value: nacl-private
@@ -355,7 +355,7 @@ Resources:
         ToPort: 22
         CidrIp: '0.0.0.0/0'
       VpcId:
-        Ref: VPC
+        Ref: VPC1
   AppSG:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
@@ -366,7 +366,13 @@ Resources:
         ToPort: 22
         CidrIp: '0.0.0.0/0'
       VpcId:
-        Ref: VPC
+        Ref: VPC1
+  App2SG:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: App2SG
+      VpcId:
+        Ref: VPC2
   InstanceProfile:
     Type: 'AWS::IAM::InstanceProfile'
     Properties:
@@ -428,4 +434,22 @@ Resources:
       Tags:
         - Key: Name
           Value: AppInstance
+  AppInstance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      KeyName:
+        Ref: SSHKeyPair
+      ImageId:
+        Ref: LatestAmiId
+      InstanceType: t3.micro
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: "false"
+          DeviceIndex: "0"
+          GroupSet:
+            - Ref: "App2SG"
+          SubnetId:
+            Ref: "subnetvpc2"
+      Tags:
+        - Key: Name
+          Value: AppInstance2
 

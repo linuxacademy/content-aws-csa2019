@@ -395,6 +395,7 @@ Resources:
   BastionInstance:
     Type: AWS::EC2::Instance
     Properties:
+      IamInstanceProfile: !Ref InstanceProfile
       KeyName: 
         Ref: SSHKeyPair
       ImageId: 
@@ -413,6 +414,7 @@ Resources:
   AppInstance:
     Type: AWS::EC2::Instance
     Properties:
+      IamInstanceProfile: !Ref InstanceProfile
       KeyName: 
         Ref: SSHKeyPair
       ImageId: 
