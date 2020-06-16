@@ -3,8 +3,8 @@
     "catpics" : {
       "Type" : "AWS::S3::Bucket",
       "Properties" : {
-        "BucketName" : "catsareawesome123"
-      }
+        "BucketName" : "catsareawesome415"
+     
     },
     "dogpics" : {
       "Type" : "AWS::S3::Bucket"
