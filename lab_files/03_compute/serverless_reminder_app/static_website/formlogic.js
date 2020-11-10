@@ -10,7 +10,12 @@ var successDiv = document.getElementById('success-message')
 var resultsDiv = document.getElementById('results-message')
 
 // Setup easy way to reference values of the input boxes
-function waitSecondsValue() { return document.getElementById('waitSeconds').value }
+function waitSecondsValue() { 
+    if (document.getElementById('waitSeconds').value == "") {
+        return document.getElementById('waitSeconds').placeholder
+    }
+    else return document.getElementById('waitSeconds').value
+}
 function messageValue() { return document.getElementById('message').value }
 function emailValue() { return document.getElementById('email').value }
 function phoneValue() { return document.getElementById('phone').value }
